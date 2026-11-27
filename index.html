@@ -1,0 +1,1327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Khubaib Ahmed | Software Engineering Portfolio</title>
+<!-- UPDATE canonical URL when the domain is set -->
+<link rel="canonical" href="https://example.com/">
+<meta name="description" content="Portfolio of Khubaib Ahmed — Software Engineering student specialising in Python, C++, JavaScript, AI/ML and Data Science. ">
+<meta name="author" content="Khubaib Ahmed">
+<meta name="theme-color" content="#070B14">
+<!-- SEO / Open Graph (NFR-11) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Khubaib Ahmed | Software Engineering Portfolio">
+<meta property="og:description" content="Education, skills, projects, experience and certifications of Khubaib Ahmed.">
+<meta property="og:site_name" content="Khubaib Ahmed Portfolio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Khubaib Ahmed | Portfolio">
+<meta name="twitter:description" content="Software Engineering student · Python · C++ · JavaScript · AI/ML">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="assets/og-image.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   COLOR SYSTEM (SRS §6)
+   Base #070B14 · Teal #00D1B2 · Violet #8B5CF6 · Blue #3882F6
+   ============================================================ */
+:root{
+  --bg:#070B14;--bg-soft:#0C1220;--surface:#101828;--surface-2:#151E32;
+  --border:rgba(255,255,255,.08);--border-hi:rgba(255,255,255,.16);
+  --tx:#F1F5F9;--tx-2:#A8B4C7;--tx-3:#8494AB;
+  --teal:#00D1B2;--teal-soft:rgba(0,209,178,.14);
+  --vio:#8B5CF6;--blue:#3882F6;--amber:#F59E0B;--rose:#F43F5E;
+  --radius:14px;--radius-lg:20px;
+  --shadow:0 20px 60px -20px rgba(0,0,0,.7);
+  --max:1180px;color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--tx);font:400 15.5px/1.65 Inter,system-ui,-apple-system,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;cursor:default}
+h1,h2,h3,h4{font-family:Orbitron,"Segoe UI",sans-serif;font-weight:700;line-height:1.18;letter-spacing:-.01em;color:var(--tx)}
+h1,h2{letter-spacing:.01em}
+a{color:var(--blue);text-decoration:none;transition:color .2s}
+a:hover{color:#60A5FA}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:6px}
+::selection{background:var(--teal);color:#04140F}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+code,.mono{font-family:"Fira Code",monospace}
+
+/* ============================================================
+   AURORA BACKGROUND (SRS §5.1) — sections use different emphasis
+   ============================================================ */
+.aur{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.aur i{position:absolute;width:65vmax;height:65vmax;border-radius:50%;filter:blur(140px);opacity:.32;animation:drift 30s ease-in-out infinite alternate}
+.aur i:nth-child(1){background:var(--teal);top:-30vmax;left:-20vmax}
+.aur i:nth-child(2){background:var(--vio);top:15vmax;right:-30vmax;animation-delay:-10s;opacity:.26}
+.aur i:nth-child(3){background:var(--blue);bottom:-35vmax;left:10vmax;animation-delay:-18s;opacity:.20}
+@keyframes drift{to{transform:translate3d(10vmax,8vmax,0) scale(1.15)}}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:radial-gradient(ellipse at 50% 0%, transparent 40%, rgba(7,11,20,.55) 100%);
+}
+
+/* ============================================================
+   OPTIONAL CURSOR-FOLLOWING GLOW (AR-05) — desktop only
+   ============================================================ */
+.cursor-glow{position:fixed;top:0;left:0;width:420px;height:420px;margin:-210px 0 0 -210px;pointer-events:none;z-index:1;border-radius:50%;background:radial-gradient(circle,rgba(0,209,178,.14),transparent 65%);opacity:0;transition:opacity .4s;mix-blend-mode:screen}
+body.cursor-on .cursor-glow{opacity:1}
+@media(hover:none),(max-width:900px){.cursor-glow{display:none}}
+
+/* ============================================================
+   NAV — Glassmorphism (SRS §5.2)
+   ============================================================ */
+nav{position:sticky;top:0;z-index:50;background:rgba(7,11,20,.72);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border-bottom:1px solid var(--border);animation:slideDown .5s ease both}
+@keyframes slideDown{from{transform:translateY(-100%);opacity:0}}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font:700 15px Orbitron,sans-serif;letter-spacing:.02em;color:var(--tx);display:flex;align-items:center;gap:10px}
+.logo::before{content:"";width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--teal),var(--vio));box-shadow:0 0 20px rgba(0,209,178,.4)}
+.nav-links{list-style:none;display:flex;gap:2px;align-items:center}
+.nav-links a{display:block;padding:8px 9px;border-radius:8px;color:var(--tx-2);font-size:13px;font-weight:500;transition:all .2s}
+.nav-links a:hover{color:var(--tx);background:rgba(255,255,255,.08)}
+.nav-links a.on{color:var(--teal);background:var(--teal-soft)}
+.nav-links a.on{
+  position: relative;
+}
+.nav-links a.on::after{
+  content: "";
+  position: absolute;
+  left: 9px;
+  right: 9px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--teal);
+}
+.hamburger{display:none;width:42px;height:42px;border-radius:10px;border:1px solid var(--border);position:relative;transition:border-color .2s}
+.hamburger:hover{border-color:var(--border-hi)}
+.hamburger span{position:absolute;left:12px;right:12px;height:1.5px;background:var(--tx);border-radius:2px;top:20px;transition:transform .3s,opacity .2s}
+.hamburger span:nth-child(1){transform:translateY(-6px)}
+.hamburger span:nth-child(3){transform:translateY(6px)}
+.hamburger[aria-expanded=true] span:nth-child(1){transform:rotate(45deg)}
+.hamburger[aria-expanded=true] span:nth-child(2){opacity:0}
+.hamburger[aria-expanded=true] span:nth-child(3){transform:rotate(-45deg)}
+@media(max-width:1080px){
+  .hamburger{display:block}
+  .nav-links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:rgba(7,11,20,.98);padding:12px 20px 20px;border-bottom:1px solid var(--border);backdrop-filter:blur(20px)}
+  .nav-links.open{display:flex;animation:slideDown .25s ease}
+  .nav-links a{padding:14px 12px;font-size:15px}
+}
+
+/* ============================================================
+   SECTION BASE
+   ============================================================ */
+section,footer{max-width:var(--max);margin:0 auto;padding:100px 24px}
+.section-head{margin-bottom:48px}
+.kicker{display:inline-block;font:500 12px "Fira Code",monospace;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;padding:6px 12px;border-radius:999px;background:var(--teal-soft);border:1px solid rgba(0,209,178,.25)}
+h2.section-title{font-size:clamp(28px,4.2vw,42px);margin-bottom:12px}
+.section-sub{color:var(--tx-2);max-width:62ch;font-size:15.5px}
+
+/* ============================================================
+   HERO (SRS §5.3) — Futuristic + Vector + Aurora + Editorial
+   ============================================================ */
+#home{min-height:calc(100svh - 72px);display:grid;grid-template-columns:1.15fr 1fr;gap:60px;align-items:center;position:relative}
+.hero-content{animation:heroIn .8s .1s both}
+.hero-content h1{font-size:clamp(40px,7vw,80px);font-weight:800;letter-spacing:.01em;line-height:1;background:linear-gradient(180deg,#FFFFFF 0%,#FFFFFF 60%,#C7D2E0 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:20px}
+.hero-role{font:500 clamp(15px,1.8vw,19px) "Fira Code",monospace;color:var(--teal);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.hero-role::before{content:"";width:40px;height:1px;background:var(--teal);flex-shrink:0}
+.hero-intro{color:var(--tx-2);max-width:56ch;font-size:16px;margin-bottom:8px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+@keyframes heroIn{from{opacity:0;transform:translateY(24px)}}
+
+/* Scroll indicator (FR-01) */
+.scroll-ind{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--tx-3);font:500 11px "Fira Code",monospace;letter-spacing:.2em;text-transform:uppercase;pointer-events:none;animation:heroIn 1s 1.6s both}
+.scroll-ind .mouse{width:22px;height:34px;border:1.5px solid var(--tx-3);border-radius:12px;position:relative}
+.scroll-ind .mouse::after{content:"";position:absolute;left:50%;top:6px;width:2px;height:6px;margin-left:-1px;background:var(--teal);border-radius:2px;animation:sc 1.8s infinite}
+@keyframes sc{0%{transform:translateY(0);opacity:1}70%{transform:translateY(12px);opacity:0}100%{transform:translateY(0);opacity:0}}
+@media(max-width:900px){.scroll-ind{display:none}}
+
+/* Buttons (AR-04) */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:12px;font:600 14.5px Inter,sans-serif;border:1px solid transparent;transition:all .2s;cursor:pointer;white-space:nowrap}
+.btn svg{width:15px;height:15px;transition:transform .25s}
+.btn-primary{background:var(--teal);color:#04140F;box-shadow:0 0 0 0 rgba(0,209,178,.5)}
+.btn-primary:hover{background:#22E6C4;color:#04140F;transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(0,209,178,.5)}
+.btn-primary:hover svg{transform:translateX(3px)}
+.btn-primary:active{transform:translateY(0) scale(.97)}
+.btn-ghost{background:rgba(255,255,255,.03);color:var(--tx);border-color:var(--border);box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.btn-ghost:hover{background:rgba(255,255,255,.07);border-color:var(--border-hi);transform:translateY(-2px)}
+.btn-ghost:hover svg{transform:translateY(2px)}
+.btn-sm{padding:9px 16px;font-size:13.5px;border-radius:10px}
+
+/* Hero artwork — subtle float / parallax (AR-02) */
+.hero-art{width:100%;max-width:460px;justify-self:center;filter:drop-shadow(0 30px 60px rgba(0,209,178,.15));animation:artFadeIn 1.2s .3s both, float 8s 1.5s ease-in-out infinite alternate;transform:translateY(var(--px,0))}
+@keyframes artFadeIn{from{opacity:0;transform:scale(.9) translateY(20px)}}
+@keyframes float{to{transform:translateY(-16px) translateY(var(--px,0))}}
+.rot{transform-origin:200px 200px;animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ============================================================
+   ABOUT (SRS §5.4) — Editorial + Glass
+   ============================================================ */
+.two-col{display:grid;grid-template-columns:1.5fr 1fr;gap:32px}
+.about-text{font-size:16px;color:var(--tx-2);line-height:1.8}
+.glass{background:linear-gradient(180deg,rgba(21,30,50,.7),rgba(16,24,40,.5));border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px;backdrop-filter:blur(10px)}
+.glass h3{font-size:12.5px;font-family:"Fira Code",monospace;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-3);margin-bottom:14px}
+.glass h3+h3{margin-top:24px}
+
+/* Tags */
+.tag{display:inline-block;font:500 12px "Fira Code",monospace;color:var(--vio);background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.22);border-radius:8px;padding:4px 10px;margin:0 6px 6px 0;transition:all .2s}
+.tag:hover{background:rgba(139,92,246,.15);border-color:rgba(139,92,246,.4)}
+.tag.status{color:var(--amber);background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25)}
+
+/* ============================================================
+   TIMELINE — Education (Minimalism + Editorial)
+   ============================================================ */
+.timeline{list-style:none;position:relative;padding-left:28px;border-left:1px solid var(--border)}
+.timeline li{position:relative;padding:0 0 36px 24px}
+.timeline li::before{content:"";position:absolute;left:-34px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(0,209,178,.15),0 0 20px rgba(0,209,178,.6)}
+.timeline li[data-status="progress"]::before{background:var(--amber);box-shadow:0 0 0 4px rgba(245,158,11,.15),0 0 20px rgba(245,158,11,.6)}
+.timeline li:last-child{padding-bottom:0}
+.timeline h3{font-size:17px;margin-bottom:6px}
+.timeline .meta{color:var(--tx-2);font-size:12.5px;margin-bottom:10px;font-family:"Fira Code",monospace}
+.timeline p{color:var(--tx-2);font-size:15px}
+
+/* ============================================================
+   SKILLS (SRS §5.4) — Constellation on desktop, expandable cards on mobile
+   ============================================================ */
+.skills-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:start}
+#net{width:100%;height:auto;max-height:480px}
+#net g{cursor:pointer}
+#net circle{fill:var(--surface);stroke:var(--blue);stroke-width:1.5;transition:stroke .25s,fill .25s}
+#net g:hover circle,#net g.on circle{stroke:var(--teal);fill:rgba(0,209,178,.15)}
+#net line.hot{stroke:var(--teal);stroke-opacity:.9}
+#net text{fill:var(--tx);font:500 11.5px Inter,sans-serif;text-anchor:middle;pointer-events:none}
+#net line{stroke:var(--vio);stroke-opacity:.55;stroke-width:1;transition:stroke .25s,stroke-opacity .25s}
+.skill-panel h3{font-size:20px;margin-bottom:6px;font-family:Orbitron,sans-serif}
+.skill-panel .cat{font:500 12px "Fira Code",monospace;color:var(--tx-3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px;display:block}
+.skill-panel h4{font-size:11.5px;font-family:"Fira Code",monospace;color:var(--tx-3);text-transform:uppercase;letter-spacing:.12em;margin:20px 0 10px;font-weight:500}
+
+/* Mobile expandable skill cards (FR-06/07) */
+.skill-cards{display:none;flex-direction:column;gap:10px}
+.skill-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
+.skill-card.open{border-color:var(--teal)}
+.skill-card summary{list-style:none;padding:16px 18px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font:500 15px Inter,sans-serif}
+.skill-card summary::-webkit-details-marker{display:none}
+.skill-card summary::after{content:"+";font:400 20px "Fira Code",monospace;color:var(--teal);transition:transform .25s}
+.skill-card[open] summary::after{transform:rotate(45deg)}
+.skill-card .body{padding:0 18px 18px;color:var(--tx-2);font-size:14px}
+.skill-card .body .cat{font:500 11.5px "Fira Code",monospace;color:var(--teal);text-transform:uppercase;letter-spacing:.1em;display:block;margin-bottom:10px}
+@media(max-width:900px){
+  .skills-grid{grid-template-columns:1fr}
+  #net,.skill-panel{display:none}
+  .skill-cards{display:flex}
+}
+
+/* ============================================================
+   CHIPS
+   ============================================================ */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.chip{background:rgba(255,255,255,.03);color:var(--tx-2);border:1px solid var(--border);border-radius:999px;padding:8px 18px;font:500 13.5px Inter,sans-serif;transition:all .2s}
+.chip:hover{border-color:var(--border-hi);color:var(--tx)}
+.chip[aria-pressed=true]{border-color:var(--teal);color:var(--teal);background:var(--teal-soft)}
+
+/* ============================================================
+   CARDS — Projects / Certs / Experience
+   ============================================================ */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:all .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);border-color:var(--border-hi);box-shadow:var(--shadow)}
+.card-thumb{height:170px;background:linear-gradient(135deg,rgba(0,209,178,.15),rgba(139,92,246,.15));position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--tx-3);font-family:"Fira Code",monospace;font-size:12px}
+.card-thumb[data-cat="Python"]{background:linear-gradient(135deg,rgba(0,209,178,.18),rgba(0,209,178,.04))}
+.card-thumb[data-cat="Web"]{background:linear-gradient(135deg,rgba(56,130,246,.18),rgba(56,130,246,.04))}
+.card-thumb[data-cat="AI/ML"]{background:linear-gradient(135deg,rgba(139,92,246,.18),rgba(139,92,246,.04))}
+.card-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .card-thumb img{transform:scale(1.05)}
+.card-thumb::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent 0 18px,rgba(7,11,20,.15) 18px 19px)}
+.card-body{padding:22px;flex:1;display:flex;flex-direction:column}
+.card-body h3{font-size:17px;margin-bottom:6px}
+.card-meta{color:var(--tx-2);font-size:12.5px;font-family:"Fira Code",monospace;margin-bottom:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.card-meta .dot{width:3px;height:3px;border-radius:50%;background:var(--tx-3)}
+.card-body p{color:var(--tx-2);font-size:15px;margin-bottom:16px;flex:1}
+.card-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+.contact-wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start}
+.contact-info h3{font-size:20px;margin-bottom:16px;font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.01em}
+.contact-info p{color:var(--tx-2);font-size:15px;margin-bottom:20px}
+.contact-line{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);color:var(--tx-2);font-size:12.5px}
+.contact-line:last-child{border-bottom:none}
+.contact-line svg{width:16px;height:16px;color:var(--teal);flex-shrink:0}
+.contact-line span{color:var(--tx-2)}
+form{display:grid;gap:18px}
+.field{display:grid;gap:6px}
+.field label{font:500 12.5px "Fira Code",monospace;color:var(--tx-3);text-transform:uppercase;letter-spacing:.06em}
+.field input,.field textarea{background:rgba(7,11,20,.5);border:1px solid var(--border);border-radius:10px;color:var(--tx);padding:13px 14px;font:15px Inter,sans-serif;width:100%;transition:all .2s}
+.field input:focus,.field textarea:focus{border-color:var(--teal);outline:none;box-shadow:0 0 0 3px rgba(0,209,178,.18);background:rgba(7,11,20,.8)}
+.field input[aria-invalid="true"],
+.field textarea[aria-invalid="true"]{
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px rgba(244,63,94,.15);
+}
+.field input[aria-invalid="true"]:focus,
+.field textarea[aria-invalid="true"]:focus{
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px rgba(244,63,94,.25);
+}
+.field textarea{resize:vertical;min-height:120px;font-family:inherit}
+.er{color:var(--rose);font-size:12.5px;min-height:0;font-family:"Fira Code",monospace}
+.status{font-size:14.5px;padding:14px 18px;border-radius:12px;display:none}
+.status.ok{display:block;background:rgba(0,209,178,.1);border:1px solid rgba(0,209,178,.4);color:var(--teal)}
+.status.bad{display:block;background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.4);color:#FCA5A5}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.empty{border:1px dashed var(--border);border-radius:var(--radius);padding:28px;color:var(--tx-3);font-size:14.5px;text-align:center;font-family:"Fira Code",monospace}
+.empty code{color:var(--teal);background:rgba(0,209,178,.08);padding:2px 6px;border-radius:4px}
+
+/* ============================================================
+   DIALOG
+   ============================================================ */
+dialog{background:var(--surface);color:var(--tx);border:1px solid var(--border-hi);border-radius:var(--radius-lg);padding:32px;width:min(760px,94vw);max-height:88svh;overflow:auto;box-shadow:var(--shadow)}
+dialog::backdrop{background:rgba(3,7,13,.85);backdrop-filter:blur(6px)}
+dialog[open]{animation:pop .28s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pop{from{opacity:0;transform:scale(.94)}}
+dialog h2{font-size:22px;margin-bottom:8px}
+dialog h4{font:500 11.5px "Fira Code",monospace;color:var(--teal);text-transform:uppercase;letter-spacing:.12em;margin:22px 0 10px}
+dialog p{color:var(--tx-2);font-size:15px;margin-bottom:10px}
+dialog ul{color:var(--tx-2);font-size:15px;padding-left:20px;margin-bottom:10px}
+dialog li{margin-bottom:6px}
+dialog img{border-radius:12px;margin-top:16px;border:1px solid var(--border)}
+.dialog-close{position:absolute;top:20px;right:20px;width:38px;height:38px;border-radius:10px;border:1px solid var(--border);color:var(--tx-2);font-size:20px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.dialog-close:hover{border-color:var(--teal);color:var(--teal)}
+
+/* ============================================================
+   GITHUB DASHBOARD (§5.4 restrained dashboard look)
+   ============================================================ */
+.gh-dash{display:grid;grid-template-columns:1.4fr 1fr;gap:22px;align-items:start}
+.gh-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px}
+.gh-card h3{font-size:16px;margin-bottom:14px;font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.01em}
+.gh-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+.gh-stat{padding:14px;border:1px solid var(--border);border-radius:12px;background:rgba(7,11,20,.4)}
+.gh-stat .n{font:700 22px Inter,sans-serif;letter-spacing:-.01em;color:var(--teal)}
+.gh-stat .l{font:500 11px "Fira Code",monospace;color:var(--tx-3);text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+.lang-bar{height:10px;border-radius:6px;overflow:hidden;display:flex;margin-top:8px;background:rgba(255,255,255,.05)}
+.lang-bar span{height:100%}
+.lang-key{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font:500 12px "Fira Code",monospace;color:var(--tx-2)}
+.lang-key i{width:10px;height:10px;border-radius:3px;display:inline-block;margin-right:6px;vertical-align:middle}
+@media(max-width:900px){.gh-dash{grid-template-columns:1fr}}
+
+/* ============================================================
+   FOOTER — cinematic vector / aurora (SRS §5.4)
+   ============================================================ */
+footer{border-top:1px solid var(--border);text-align:center;padding:64px 24px 56px;color:var(--tx-3);font-size:14px;position:relative;overflow:hidden}
+footer::before{content:"";position:absolute;left:50%;top:-80px;width:600px;height:200px;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(0,209,178,.18),transparent 60%);pointer-events:none}
+footer::after{content:"";position:absolute;left:50%;top:-60px;width:min(900px,100vw);height:120px;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(139,92,246,.14),transparent 65%);pointer-events:none}
+.footer-social{display:flex;justify-content:center;gap:18px;margin-bottom:20px;flex-wrap:wrap;position:relative;z-index:1}
+.footer-social a{color:var(--tx-2);font-size:14px}
+.footer-social a:hover{color:var(--teal)}
+footer p{position:relative;z-index:1}
+
+/* ============================================================
+   REVEAL + LOADER + REDUCED MOTION
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+#loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;font:800 42px Orbitron,sans-serif;color:var(--teal);pointer-events:none;animation:fadeOut .5s .7s forwards;letter-spacing:.05em}
+@keyframes fadeOut{to{opacity:0;visibility:hidden}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+  #loader{display:none}
+  .aur i{animation:none}
+}
+
+/* ============================================================
+   RESPONSIVE (NFR-02)
+   ============================================================ */
+@media(max-width:900px){
+  #home{grid-template-columns:1fr;gap:40px;text-align:center}
+  .hero-role{justify-content:center}
+  .hero-role::before{display:none}
+  .hero-intro{margin-left:auto;margin-right:auto}
+  .hero-cta{justify-content:center}
+  .hero-art{max-width:320px}
+  .two-col,.contact-wrap{grid-template-columns:1fr;gap:28px}
+  .aur i{opacity:.14}
+}
+@media(max-width:600px){
+  section,footer{padding:72px 18px}
+  .grid{grid-template-columns:1fr}
+  .card-thumb{height:150px}
+  dialog{padding:24px 20px}
+  .section-head{margin-bottom:32px}
+}
+
+/* ============================================================
+   LIGHT MODE (prefers-color-scheme)
+   ============================================================ */
+.skip{position:absolute;left:-9999px;top:8px;z-index:200;background:var(--teal);color:#04140F;padding:10px 16px;border-radius:8px;font-weight:600}
+.skip:focus{left:12px;color:#04140F}
+.avatar{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;overflow:hidden;margin-bottom:22px;font:700 28px Orbitron,sans-serif;color:#04140F;background:linear-gradient(135deg,var(--teal),var(--vio));box-shadow:0 0 0 4px rgba(0,209,178,.15)}
+.avatar img{width:100%;height:100%;object-fit:cover}
+#cs h4{font:500 11.5px "Fira Code",monospace;color:var(--teal);text-transform:uppercase;letter-spacing:.12em;margin:20px 0 8px}
+#cs p,#cs li{color:var(--tx-2);font-size:15px}
+#cs ul{padding-left:20px}
+#cs li{margin-bottom:6px}
+@media(max-width:900px){.avatar{margin-left:auto;margin-right:auto}}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg:#F8FAFC;
+    --bg-soft:#F1F5F9;
+    --surface:#FFFFFF;
+    --surface-2:#F1F5F9;
+    --border:rgba(15,23,42,.08);
+    --border-hi:rgba(15,23,42,.16);
+    --tx:#0F172A;
+    --tx-2:#475569;
+    --tx-3:#64748B;
+    --teal:#00A88E;
+    --vio:#7C3AED;
+    --blue:#2563EB;
+  }
+  .aur i { opacity: .10; }
+  .card-thumb::after { display: none; }
+  body::after { display: none; }
+  footer::before, footer::after { opacity: .5; }
+
+  /* Readability fixes for surfaces that are hard-coded dark above */
+  :root { color-scheme: light; }
+  .hero-content h1 { background-image: linear-gradient(180deg,#0F172A 0%,#0F172A 60%,#475569 100%); }
+  nav { background: rgba(248,250,252,.78); }
+  .nav-links a:hover { background: rgba(15,23,42,.06); }
+  .glass { background: linear-gradient(180deg,rgba(255,255,255,.9),rgba(241,245,249,.8)); }
+  .gh-stat { background: rgba(15,23,42,.03); }
+  .field input, .field textarea { background: rgba(255,255,255,.8); }
+  .field input:focus, .field textarea:focus { background: #fff; }
+  @media (max-width: 1080px) { .nav-links { background: rgba(248,250,252,.98); } }
+}
+</style>
+</head>
+<body>
+<noscript>
+  <style>
+    .reveal{opacity:1 !important;transform:none !important}
+    #loader{display:none !important}
+  </style>
+</noscript>
+
+<a class="skip" href="#main">Skip to content</a>
+<div id="loader" aria-hidden="true">KA</div>
+<div class="aur" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<nav aria-label="Primary">
+  <div class="nav-inner">
+    <a class="logo" href="#home" id="logoName">Khubaib Ahmed</a>
+    <button class="hamburger" id="hb" aria-label="Toggle menu" aria-expanded="false" aria-controls="nl">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nl"></ul>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ============ HOME / HERO ============ -->
+<section id="home">
+  <div class="hero-content">
+    <div class="avatar" id="av" role="img" aria-label="Profile avatar"></div>
+    <h1 id="nm"></h1>
+    <p class="hero-role" id="tt"></p>
+    <p class="hero-intro" id="in"></p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#projects">
+        View projects
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a class="btn btn-ghost" id="hero-cv" href="#resume">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download CV
+      </a>
+    </div>
+    <div class="hero-cta" id="soc" style="margin-top:20px"></div>
+  </div>
+
+  <svg class="hero-art" viewBox="0 0 400 400" role="img" aria-label="Abstract network artwork">
+    <defs><linearGradient id="gr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00D1B2"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient></defs>
+    <g class="rot">
+      <circle cx="200" cy="200" r="170" fill="none" stroke="url(#gr)" stroke-width="1.5" stroke-opacity=".7"/>
+      <circle cx="200" cy="30" r="6" fill="#00D1B2"/>
+      <circle cx="370" cy="200" r="5" fill="#8B5CF6"/>
+      <circle cx="80" cy="320" r="5" fill="#3882F6"/>
+    </g>
+    <circle cx="200" cy="200" r="115" fill="none" stroke="#3882F6" stroke-opacity=".5" stroke-dasharray="4 8"/>
+    <polygon points="200,95 291,147 291,253 200,305 109,253 109,147" fill="rgba(0,209,178,.08)" stroke="url(#gr)" stroke-width="2"/>
+    <path d="M200 95V200L291 253M200 200L109 253M109 147L200 200L291 147" stroke="#8B5CF6" stroke-opacity=".7" fill="none"/>
+    <g fill="#00D1B2">
+      <circle cx="200" cy="95" r="5"/><circle cx="291" cy="147" r="5"/><circle cx="291" cy="253" r="5"/>
+      <circle cx="200" cy="305" r="5"/><circle cx="109" cy="253" r="5"/><circle cx="109" cy="147" r="5"/>
+      <circle cx="200" cy="200" r="9" fill="#8B5CF6"/>
+    </g>
+  </svg>
+
+  <div class="scroll-ind" aria-hidden="true">
+    <div class="mouse"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="reveal">
+  <div class="section-head">
+    <h2 class="section-title">About Me</h2>
+  </div>
+  <div class="two-col">
+    <div class="about-text"><p id="ab"></p><p id="mo" style="margin-top:14px"></p></div>
+    <div class="glass">
+      <h3>Interests</h3><div id="int"></div>
+      <h3>Languages</h3><div id="lg"></div>
+      <h3>Strengths</h3><div id="st"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAREER OBJECTIVE ============ -->
+<section id="objective" class="reveal">
+  <div class="section-head">
+    <h2 class="section-title">Career Objective</h2>
+  </div>
+  <div class="glass">
+    <p id="ob" style="font-size:17px;color:var(--tx-2);line-height:1.8"></p>
+    <div id="ob-t" style="margin-top:16px"></div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section id="education" class="reveal">
+  <div class="section-head">
+    <h2 class="section-title">Education</h2>
+  </div>
+  <ol class="timeline" id="ed"></ol>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills" class="reveal">
+  <div class="section-head">
+    <h2 class="section-title">Skills</h2>
+  </div>
+  <div class="skills-grid">
+    <div>
+      <svg id="net" viewBox="0 0 600 400" aria-label="Skill constellation"></svg>
+      <div class="skill-cards" id="sc"></div>
+    </div>
+    <div class="glass skill-panel" id="sd" aria-live="polite">
+      <p style="color:var(--tx-3)">No skill selected.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects" class="reveal">
+  <div class="section-head">
+    <h2 class="section-title">Projects</h2>
+  </div>
+  <div class="chips" id="pf" role="group" aria-label="Filter projects"></div>
+  <div class="grid" id="pg"></div>
+  <div class="glass" id="cs" style="margin-top:40px"></div>
+</section>
+
+<!-- ============ JOURNEY ============ -->
+<section id="journey" class="reveal">
+  <div class="section-head">
+    <h2 class="section-title">Journey</h2>
+  </div>
+  <ol class="timeline" id="jr"></ol>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience" class="reveal">
+  <div class="section-head">
+    <h2 class="section-title">Experience</h2>
+  </div>
+  <div class="grid" id="ex"></div>
+</section>
+
+<!-- ============ CERTIFICATIONS ============ -->
+<section id="certifications" class="reveal">
+  <div class="section-head">
+    <h2 class="section-title">Certifications</h2>
+  </div>
+  <div class="grid" id="ce"></div>
+</section>
+
+<!-- ============ ACHIEVEMENTS ============ -->
+<section id="achievements" class="reveal">
+  <div class="section-head">
+    <h2 class="section-title">Achievements</h2>
+  </div>
+  <div class="grid" id="ac"></div>
+</section>
+
+<!-- ============ GITHUB ============ -->
+<section id="github" class="reveal">
+  <div class="section-head">
+    <h2 class="section-title">GitHub</h2>
+  </div>
+  <div id="gh"></div>
+</section>
+
+<!-- ============ RESUME ============ -->
+<section id="resume" class="reveal">
+  <div class="section-head">
+    <h2 class="section-title">Resume</h2>
+  </div>
+  <div id="rs"></div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="reveal">
+  <div class="section-head">
+    <h2 class="section-title">Contact</h2>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <p>I'm happy to hear about projects, internships or collaboration. Send a message and I'll reply by email.</p>
+      <p>The form opens your email app with the message filled in.</p>
+      <div id="ci"></div>
+    </div>
+    <div class="glass">
+      <form id="cf" novalidate>
+        <div class="field">
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" autocomplete="name" aria-describedby="e-name">
+          <span class="er" id="e-name"></span>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" aria-describedby="e-email">
+          <span class="er" id="e-email"></span>
+        </div>
+        <div class="field">
+          <label for="f-subject">Subject</label>
+          <input id="f-subject" name="subject" aria-describedby="e-subject">
+          <span class="er" id="e-subject"></span>
+        </div>
+        <div class="field">
+          <label for="f-message">Message</label>
+          <textarea id="f-message" name="message" rows="5" aria-describedby="e-message"></textarea>
+          <span class="er" id="e-message"></span>
+        </div>
+        <button class="btn btn-primary" type="submit">
+          Write email
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <div class="status" id="fs" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-social" id="fl"></div>
+  <p>© <span id="yr"></span> <span id="fn"></span></p>
+</footer>
+
+<dialog id="dg" aria-label="Details"></dialog>
+
+<script>
+/* ============================================================
+   ✏️ EDIT ME — Sirf ye do objects update karo
+   ============================================================ */
+const C = {
+  name: "Khubaib Ahmed",
+  title: "Software Engineering Student",
+  intro: "Software engineering student working with Python, C++ and JavaScript, and learning AI/ML and data science.",
+  about: "I'm a software engineering student at the University of Sindh. I mostly write Python and C++, and I'm learning machine learning and web development.",
+  interests: ["Software Development", "AI / Machine Learning", "Data Science", "Web Development"],
+  github: "https://github.com/khubaibahmed321786-netizen",
+  linkedin: "",
+  email: "khubaibahmed321786@gmail.com",
+  resume: "resume/Khubaib_Ahmed_CV.pdf",
+  photo: "",
+  location: "Kotri, Pakistan",
+  languages: ["Kashmiri (mother tongue)", "Urdu (national)", "English (intermediate)"]
+};
+
+const D = {
+  /* ---- EDUCATION (SRS §3: CS college, CIT, DIT, BS SE) ---- */
+  education: [
+    {
+      prog: "BS Software Engineering",
+      inst: "University of Sindh",
+      status: "In progress",
+      grade: "",
+      year: "Feb 2024 – present",
+      note: "",
+      details: [
+        ["University", "University of Sindh"],
+        ["Program", "BS Software Engineering"],
+        ["Status", "In progress"]
+      ],
+      imgs: []
+    },
+    {
+      prog: "DIT — One-Year Diploma",
+      inst: "Aazmia Institute of IT",
+      status: "Passed",
+      grade: "",
+      year: "Jan – Dec 2023",
+      note: "",
+      details: [["Institute", "Aazmia Institute of IT"], ["Level", "Diploma"], ["Year", "2023"]],
+      imgs: []
+    },
+    {
+      prog: "Higher Secondary Certificate (HSC), Science General",
+      inst: "Workers Intermediate College, Kotri · BISE Hyderabad",
+      status: "Passed",
+      grade: "Grade A · 73.72% (811/1100)",
+      year: "2023",
+      note: "Subjects: Physics, Mathematics and Computer.",
+      details: [
+        ["Board", "BISE Hyderabad, Sindh"],
+        ["Group", "Science General"],
+        ["Total", "811 / 1100 · 73.72% · Grade A"]
+      ],
+      imgs: [{ src: "certificates/cert1.jpg", alt: "HSC marks certificate" }]
+    },
+    {
+      prog: "Information Technology (C.I.T), Short Course",
+      inst: "Aazmia Institute of I.T Vocational Technical Centre, Kotri · Trade Testing Board Sindh (STEVTA)",
+      status: "Passed",
+      grade: "Grade A · 87.3% (349/400)",
+      year: "Jan – Jun 2022",
+      note: "Covered Introduction to I.T. & MS Office, Web Programming, and V.B. and S.Q.L. Server.",
+      details: [
+        ["Trade", "Information Technology (C.I.T)"],
+        ["Institute", "Aazmia Institute of I.T Vocational Technical Centre"],
+        ["Awarding body", "Trade Testing Board Sindh (STEVTA)"],
+        ["Total", "349 / 400 · 87.3% · Grade A"]
+      ],
+      imgs: [{ src: "certificates/cert2.jpg", alt: "C.I.T certificate" }]
+    }
+  ],
+
+  /* ---- SKILLS (FR-06/07 — learning status included) ---- */
+  skills: [
+    { n: "Python", cat: "Languages", status: "Comfortable" },
+    { n: "C++", cat: "Languages", status: "Comfortable" },
+    { n: "JavaScript", cat: "Languages", status: "Learning" },
+    { n: "Django", cat: "Web", status: "Learning" },
+    { n: "HTML/CSS", cat: "Web", status: "Comfortable" },
+    { n: "REST APIs", cat: "Web", status: "Learning" },
+    { n: "AI/ML", cat: "Data & AI", status: "Learning" },
+    { n: "Data Science", cat: "Data & AI", status: "Learning" },
+    { n: "MySQL", cat: "Databases", status: "Comfortable" },
+    { n: "Git", cat: "Tools", status: "Comfortable" },
+    { n: "GitHub", cat: "Tools", status: "Comfortable" },
+    { n: "Parallel Computing", cat: "Systems", status: "Learning" },
+    { n: "Distributed Systems", cat: "Systems", status: "Learning" }
+  ],
+
+  /* ---- PROJECTS (FR-08 → FR-10 — full structure) ---- */
+  projects: [
+    {
+      id: "mcq-quiz",
+      name: "MCQ Quiz System",
+      cat: "Python",
+      status: "Completed",
+      desc: "A desktop quiz app for students with registration, login, 20-question MCQ quizzes and saved results.",
+      tech: ["Python", "Tkinter", "MySQL", "phpMyAdmin"],
+      overview: "A desktop MCQ quiz system built with Python Tkinter and MySQL, offering registration, login, a 20-question quiz and persistent results.",
+      problem: "Quiz practice needs a way to identify each student, limit attempts and keep their results.",
+      solution: "A Tkinter desktop app backed by MySQL that handles registration and login, serves 20 random questions, enforces 3 attempts per student and saves every result.",
+      features: [
+        "One-time registration with name, email, mobile and password",
+        "Login with email and password checked against the database",
+        "20 random MCQs per quiz with 3 options each",
+        "5 marks per correct answer, pass mark 50%",
+        "3 attempts per student, tracked in the database",
+        "Results saved automatically after each attempt"
+      ],
+      architecture: "Tkinter GUI connected to a MySQL database with four linked tables: registration, questions, answers and result.",
+      img: "projects/project1.jpg",
+      shots: [],
+      github: "",
+      demo: ""
+    },
+    {
+      id: "tic-tac-toe",
+      name: "Tic Tac Toe",
+      cat: "Python",
+      status: "Completed",
+      desc: "A desktop Tic Tac Toe game with 1v1 mode or vs the computer.",
+      tech: ["Python", "Tkinter"],
+      overview: "Desktop Tic Tac Toe with two-player and single-player-vs-computer modes.",
+      problem: "Both a two-player mode and a computer opponent need reliable turn handling and win or draw detection.",
+      solution: "A Tkinter game with a 1v1 mode and a vs-computer mode that checks for a win or draw after every move.",
+      features: ["1v1 mode", "You vs Computer mode", "Win/draw detection"],
+      img: "",
+      shots: [],
+      github: "",
+      demo: ""
+    },
+    {
+      id: "8-puzzle",
+      name: "8-Puzzle Game",
+      cat: "Python",
+      status: "Completed",
+      desc: "Sliding-tile puzzle: arrange numbers 1–8 on a 3×3 board with a move counter and shuffle.",
+      tech: ["Python", "Tkinter"],
+      overview: "8-puzzle game with a move counter, shuffle button and congratulations message.",
+      problem: "A sliding-tile puzzle has to track tile positions, count moves and recognise when it is solved.",
+      solution: "A Tkinter 3×3 board with a move counter, a shuffle button and a congratulations message when the tiles are in order.",
+      features: ["3×3 sliding board", "Move counter", "New Game, Shuffle, Solve buttons"],
+      img: "",
+      shots: [],
+      github: "",
+      demo: ""
+    }
+  ],
+
+  /* ---- JOURNEY ---- */
+  journey: [
+    { when: "Jan – Jun 2022", title: "Completed the C.I.T short course", text: "Six months at Aazmia Institute, Kotri; passed the Trade Testing Board exam with Grade A." },
+    { when: "Jan – Dec 2023", title: "DIT — one-year diploma", text: "Studied at Aazmia Institute of IT." },
+    { when: "May 2023", title: "HSC annual examination", text: "Passed the Higher Secondary Certificate in Science General with Grade A." },
+    { when: "Feb 2024 – present", title: "BS Software Engineering", text: "Studying at the University of Sindh." }
+  ],
+
+  /* ---- EXPERIENCE ---- */
+  experience: [
+    {
+      org: "MIT Software Solution, Hyderabad",
+      role: "Python AI Engineer Intern",
+      dates: "Jul – Sep 2026",
+      desc: "Two-month internship covering Python, deep learning, machine learning, generative AI and agent AI.",
+      tech: ["Python", "Deep Learning", "Machine Learning", "Generative AI"],
+      cert: 0
+    }
+  ],
+
+  /* ---- PROFILE / OBJECTIVE / ACHIEVEMENTS / CASE STUDY ---- */
+  profile: {
+    path: "I started with short IT courses (C.I.T in 2022, DIT in 2023), moved on to a BS in Software Engineering in 2024, and added a Python AI Engineer internship and the Google AI Professional Certificate in 2026."
+  },
+  objective: {
+    text: "My goal is to become a software engineer working in AI and machine learning. I'm building a base in Python and C++, and learning web development and parallel and distributed computing alongside my BS in Software Engineering.",
+    focus: ["AI / Machine Learning", "Software Development", "Data Science"]
+  },
+  achievements: [
+    { title: "HSC Science General, Grade A", issuer: "Workers Intermediate College, Kotri · BISE Hyderabad", date: "2023", desc: "Scored 811 out of 1100 marks (73.72%)." },
+    { title: "C.I.T Short Course, Grade A", issuer: "Trade Testing Board Sindh (STEVTA)", date: "2022", desc: "Scored 349 out of 400 marks (87.3%)." }
+  ],
+  caseStudy: {
+    project: "MCQ Quiz System",
+    role: "Developer (individual project): database design, Tkinter interface and quiz logic.",
+    process: [
+      "Defined the flow: register, log in, take a quiz, see the result.",
+      "Designed four MySQL tables: registration, questions, answers and result.",
+      "Built the Tkinter screens for registration, login and the quiz.",
+      "Connected the app to MySQL (managed with phpMyAdmin) and saved the result after each attempt."
+    ],
+    choices: [
+      "Tkinter and MySQL, so the app runs on a desktop with a local database.",
+      "20 random questions with 3 options each, 5 marks per correct answer and a 50% pass mark.",
+      "Attempts stored in the database, so the 3-attempt limit is tracked per student."
+    ],
+    challenges: "Keeping the attempt limit and saved results consistent for each student, and linking every question to its options across the questions and answers tables.",
+    outcome: "A working desktop quiz system with registration, login, randomised 20-question quizzes, attempt limits and saved results."
+  },
+
+  /* ---- CERTIFICATIONS ---- */
+  certs: [
+    {
+      title: "Python AI Engineer Internship",
+      issuer: "MIT Software Solution, Hyderabad",
+      date: "2026",
+      desc: "Certificate of internship covering Python, deep learning, machine learning, generative AI and advanced Python libraries.",
+      skills: ["Python", "Deep Learning", "Machine Learning", "Generative AI"],
+      img: "certificates/cert3.jpg",
+      verify: ""
+    },
+    {
+      title: "Google AI Professional Certificate",
+      issuer: "Google, via Coursera",
+      date: "2026",
+      desc: "Seven-course Google programme on using AI in everyday work.",
+      skills: ["AI Fundamentals", "Data Analysis", "App Building"],
+      img: "certificates/cert4.jpg",
+      verify: ""
+    }
+  ]
+};
+
+/* ============================================================
+   ⚙️ LOGIC — Neeche kuch change karne ki zarurat nahi
+   ============================================================ */
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const ok = u => /^https?:\/\//.test(u || "");
+const A = (u, t, c = "btn btn-ghost btn-sm") => ok(u)
+  ? `<a class="${c}" href="${esc(u)}" target="_blank" rel="noopener noreferrer">${t}</a>` : "";
+const empty = m => `<p class="empty">${m}</p>`;
+const tags = a => (a || []).map(t => `<span class="tag">${esc(t)}</span>`).join("");
+const statusTag = s => s ? `<span class="tag status">${esc(s)}</span>` : "";
+const dg = $("#dg");
+
+function openModal(h) {
+  dg.innerHTML = `<button class="dialog-close" aria-label="Close" onclick="dg.close()">×</button>${h}`;
+  dg.showModal();
+}
+dg.addEventListener("click", e => { if (e.target === dg) dg.close(); });
+
+/* ---------- HEADER ---------- */
+$("#nm").textContent = C.name;
+$("#av").innerHTML = C.photo ? `<img src="${esc(C.photo)}" alt="Portrait of ${esc(C.name)}">` : esc(C.name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase());
+const heroCv = document.getElementById('hero-cv');
+if (heroCv && C.resume) {
+  heroCv.href = C.resume;
+  heroCv.setAttribute('download', '');
+} else if (heroCv) {
+  heroCv.href = '#resume';
+  heroCv.querySelector('svg')?.remove();
+  heroCv.textContent = 'View Resume';
+}
+$("#tt").textContent = C.title;
+$("#in").textContent = C.intro;
+$("#ab").textContent = C.about;
+$("#yr").textContent = new Date().getFullYear();
+$("#fn").textContent = C.name;
+$("#logoName").textContent = C.name;
+$("#loader").textContent = C.name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
+$("#int").innerHTML = tags(C.interests);
+$("#lg").innerHTML = tags(C.languages);
+$("#mo").textContent = D.profile.path;
+$("#st").innerHTML = tags(D.skills.filter(s => s.status === "Comfortable").map(s => s.n));
+$("#ob").textContent = D.objective.text;
+$("#ob-t").innerHTML = tags(D.objective.focus);
+$("#ac").innerHTML = D.achievements.length
+  ? D.achievements.map(a => `<article class="glass"><h3 style="font-size:17px;margin-bottom:6px;font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.01em">${esc(a.title)}</h3><div style="color:var(--tx-2);font-family:'Fira Code',monospace;font-size:12.5px;margin-bottom:12px">${esc(a.issuer)} · ${esc(a.date)}</div><p style="color:var(--tx-2);font-size:15px">${esc(a.desc)}</p></article>`).join("")
+  : empty("No achievements added yet.");
+const CS = D.caseStudy, csb = (h, v) => v && v.length ? `<h4>${h}</h4>${Array.isArray(v) ? "<ul>" + v.map(i => `<li>${esc(i)}</li>`).join("") + "</ul>" : `<p>${esc(v)}</p>`}` : "";
+$("#cs").innerHTML = `<h3 style="font-size:20px;margin-bottom:4px;font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.01em">Case study: ${esc(CS.project)}</h3>${csb("My role", CS.role)}${csb("Process", CS.process)}${csb("Implementation choices", CS.choices)}${csb("Challenges", CS.challenges)}${csb("Outcome", CS.outcome)}`;
+
+/* ---------- SOCIAL ---------- */
+const mailBtn = C.email ? `<a class="btn btn-ghost btn-sm" href="mailto:${esc(C.email)}">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+  Email
+</a>` : "";
+const social = A(C.github, "GitHub") + A(C.linkedin, "LinkedIn") + mailBtn;
+$("#soc").innerHTML = social;
+$("#fl").innerHTML = social;
+
+/* ---------- NAV ---------- */
+const NAV = ["Home","About","Objective","Education","Skills","Projects","Experience","Certifications","Achievements","GitHub","Resume","Contact"];
+$("#nl").innerHTML = NAV.map(n => `<li><a href="#${n.toLowerCase()}">${n}</a></li>`).join("");
+const hb = $("#hb"), nl = $("#nl");
+hb.onclick = () => { const o = nl.classList.toggle("open"); hb.setAttribute("aria-expanded", o); };
+nl.onclick = e => { if (e.target.tagName === "A") { nl.classList.remove("open"); hb.setAttribute("aria-expanded", false); } };
+
+/* ---------- EDUCATION (FR-05) ---------- */
+$("#ed").innerHTML = D.education.map((e, i) => `
+  <li data-status="${/progress/i.test(e.status || "") ? 'progress' : 'done'}">
+    <h3>${esc(e.prog)}</h3>
+    <div class="meta">${[e.inst, e.status, e.grade, e.year].filter(Boolean).map(esc).join(" · ")}</div>
+    ${e.note ? `<p>${esc(e.note)}</p>` : ""}
+    ${e.details || e.imgs?.length ? `<button class="btn btn-ghost btn-sm" data-e="${i}" style="margin-top:12px">See details</button>` : ""}
+  </li>
+`).join("");
+
+$("#ed").onclick = e => {
+  const b = e.target.closest("[data-e]"); if (!b) return;
+  const x = D.education[+b.dataset.e];
+  openModal(`
+    <h2>${esc(x.prog)}</h2>
+    <p style="color:var(--tx-3);font-family:'Fira Code',monospace;font-size:13px">${[x.inst, x.year].filter(Boolean).map(esc).join(" · ")}</p>
+    ${x.details ? `<h4>Details</h4><dl style="display:grid;grid-template-columns:auto 1fr;gap:8px 18px">${x.details.map(d => `<dt style="color:var(--tx-3);font-size:13px;font-family:'Fira Code',monospace">${esc(d[0])}</dt><dd style="margin:0;color:var(--tx-2)">${esc(d[1])}</dd>`).join("")}</dl>` : ""}
+    ${(x.imgs || []).map(m => `<img src="${esc(m.src)}" alt="${esc(m.alt)}" loading="lazy">`).join("")}
+  `);
+};
+
+/* ---------- SKILLS (FR-06/07) ---------- */
+const R = 170, cx = 300, cy = 200;
+const pts = D.skills.map((s, i) => {
+  const a = i / D.skills.length * Math.PI * 2 - Math.PI / 2;
+  return [cx + R * 1.5 * Math.cos(a), cy + 160 * Math.sin(a)];
+});
+
+$("#net").innerHTML =
+  pts.map(p => `<line x1="${cx}" y1="${cy}" x2="${p[0]}" y2="${p[1]}"/>`).join("") +
+  `<circle cx="${cx}" cy="${cy}" r="6" style="fill:var(--vio);stroke:none"/>` +
+  D.skills.map((s, i) => `
+    <g tabindex="0" role="button" aria-label="${esc(s.n)}" data-i="${i}">
+      <circle cx="${pts[i][0]}" cy="${pts[i][1]}" r="${s.n.length > 8 ? 34 : 29}"/>
+      <text x="${pts[i][0]}" y="${pts[i][1]}">
+        ${s.n.split(" ").map((w, k, a) => `<tspan x="${pts[i][0]}" dy="${k ? 13 : (a.length > 1 ? -2 : 4)}">${esc(w)}</tspan>`).join("")}
+      </text>
+    </g>
+  `).join("");
+
+/* Mobile expandable skill cards */
+$("#sc").innerHTML = D.skills.map((s, i) => `
+  <details class="skill-card" data-i="${i}">
+    <summary>${esc(s.n)} ${statusTag(s.status)}</summary>
+    <div class="body">
+      <span class="cat">${esc(s.cat)}</span>
+      <div>${relatedText(s)}</div>
+    </div>
+  </details>
+`).join("");
+
+function relatedText(s) {
+  const rel = D.skills.filter(x => x.cat === s.cat && x !== s).map(x => x.n);
+  const pj = D.projects.filter(p => (p.tech || []).includes(s.n)).map(p => p.name);
+  return `
+    ${rel.length ? `<h4 style="font:500 11.5px 'Fira Code',monospace;color:var(--tx-3);text-transform:uppercase;letter-spacing:.12em;margin:14px 0 6px">Related skills</h4>${tags(rel)}` : ""}
+    <h4 style="font:500 11.5px 'Fira Code',monospace;color:var(--tx-3);text-transform:uppercase;letter-spacing:.12em;margin:14px 0 6px">Projects using it</h4>
+    ${pj.length ? tags(pj) : '<p style="color:var(--tx-3);font-size:14px">None listed yet.</p>'}
+  `;
+}
+
+function pickSkill(i) {
+  const s = D.skills[i];
+  $$("#net g").forEach(g => g.classList.toggle("on", g.dataset.i == i));
+  $$("#net line").forEach((ln, k) => ln.classList.toggle("hot", k === i));
+  $("#sd").innerHTML = `
+    <h3>${esc(s.n)}</h3>
+    <span class="cat">${esc(s.cat)}</span>
+    ${statusTag(s.status)}
+    ${relatedText(s)}
+  `;
+}
+$("#skills").addEventListener("click", e => { const t = e.target.closest("[data-i]"); if (t) pickSkill(+t.dataset.i); });
+$("#net").addEventListener("keydown", e => {
+  const t = e.target.closest("[data-i]");
+  if (t && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); pickSkill(+t.dataset.i); }
+});
+
+/* ---------- PROJECTS (FR-08 → FR-10, FR-09 fixed categories) ---------- */
+let flt = "All";
+const FIXED_CATS = ["All", "AI/ML", "Web", "Python", "University"];
+$("#pf").innerHTML = FIXED_CATS.map(c => `<button class="chip" aria-pressed="${c === "All"}">${c}</button>`).join("");
+$("#pf").onclick = e => {
+  const b = e.target.closest("button"); if (!b) return;
+  flt = b.textContent;
+  $$("#pf button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  drawProjects();
+};
+
+function drawProjects() {
+  const list = D.projects.filter(p => flt === "All" || p.cat === flt);
+  if (!D.projects.length) { $("#pg").innerHTML = empty("No projects added yet. Add entries to <code>D.projects</code>."); return; }
+  if (!list.length) { $("#pg").innerHTML = empty("No projects in this category yet."); return; }
+  $("#pg").innerHTML = list.map(p => {
+    const img = p.img || p.shots?.[0]?.src;
+    return `
+      <article class="card">
+        <div class="card-thumb" data-cat="${esc(p.cat)}">
+          ${img ? `<img src="${esc(img)}" alt="${esc(p.name)} preview" loading="lazy">` : `<span>Preview</span>`}
+        </div>
+        <div class="card-body">
+          <h3>${esc(p.name)}</h3>
+          <div class="card-meta">
+            <span>${esc(p.cat)}</span>
+            ${p.status ? `<span class="dot"></span><span>${esc(p.status)}</span>` : ""}
+          </div>
+          <p>${esc(p.desc)}</p>
+          <div>${tags(p.tech)}</div>
+          <div class="card-actions">
+            <button class="btn btn-primary btn-sm" data-p="${esc(p.id)}">Details</button>
+            ${A(p.github, "Code")}
+            ${A(p.demo, "Live")}
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+}
+
+$("#pg").onclick = e => {
+  const b = e.target.closest("[data-p]"); if (!b) return;
+  const p = D.projects.find(x => x.id == b.dataset.p);
+  const block = (h, v) => v && v.length
+    ? `<h4>${h}</h4>${Array.isArray(v) ? "<ul>" + v.map(i => `<li>${esc(i)}</li>`).join("") + "</ul>" : `<p>${esc(v)}</p>`}`
+    : "";
+  openModal(`
+    <h2>${esc(p.name)}</h2>
+    <p style="color:var(--tx-3);font-family:'Fira Code',monospace;font-size:13px">${esc(p.cat)}${p.status ? " · " + esc(p.status) : ""}</p>
+    ${block("Overview", p.overview || p.desc)}
+    ${block("Problem", p.problem)}
+    ${block("Solution", p.solution)}
+    ${block("Objectives", p.objectives)}
+    ${block("Features", p.features)}
+    ${p.tech ? `<h4>Tech Stack</h4>${tags(p.tech)}` : ""}
+    ${block("Architecture", p.architecture)}
+    ${block("Challenges", p.challenges)}
+    ${block("Outcomes", p.outcomes)}
+    ${(p.shots || []).map(s => `<img src="${esc(s.src)}" alt="${esc(s.alt)}" loading="lazy">`).join("")}
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px">
+      ${A(p.github, "View Repository", "btn btn-primary btn-sm")}
+      ${A(p.demo, "Live Demo", "btn btn-ghost btn-sm")}
+    </div>
+  `);
+};
+drawProjects();
+
+/* ---------- JOURNEY ---------- */
+$("#jr").innerHTML = D.journey.length
+  ? D.journey.map(j => `<li data-status="done"><h3>${esc(j.title)}</h3><div class="meta">${esc(j.when)}</div><p>${esc(j.text)}</p></li>`).join("")
+  : `<li style="list-style:none;padding-left:0">${empty("Journey milestones haven't been added yet.")}</li>`;
+
+/* ---------- EXPERIENCE (FR-11) ---------- */
+$("#ex").innerHTML = D.experience.length
+  ? D.experience.map(x => `
+      <article class="glass">
+        <h3 style="font-size:17px;margin-bottom:6px;font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.01em">${esc(x.role)}</h3>
+        <div style="color:var(--tx-3);font-family:'Fira Code',monospace;font-size:13px;margin-bottom:14px">${esc(x.org)} · ${esc(x.dates)}</div>
+        <p style="color:var(--tx-2);font-size:14.5px;margin-bottom:16px">${esc(x.desc)}</p>
+        <div>${tags(x.tech)}</div>
+        ${x.cert != null ? `<div style="margin-top:14px"><button class="btn btn-ghost btn-sm" data-c="${x.cert}">View Certificate</button></div>` : ""}
+      </article>
+    `).join("")
+  : empty("No experience added yet.");
+
+/* ---------- CERTIFICATIONS (FR-12, FR-13) ---------- */
+$("#ce").innerHTML = D.certs.length
+  ? D.certs.map((c, i) => `
+      <article class="card">
+        <div class="card-thumb">
+          ${c.img ? `<img src="${esc(c.img)}" alt="${esc(c.title)}" loading="lazy">` : `<span>Certificate</span>`}
+        </div>
+        <div class="card-body">
+          <h3>${esc(c.title)}</h3>
+          <div class="card-meta"><span>${esc(c.issuer)}</span><span class="dot"></span><span>${esc(c.date)}</span></div>
+          ${c.desc ? `<p>${esc(c.desc)}</p>` : ""}
+          <div>${tags(c.skills)}</div>
+          <div class="card-actions">
+            ${c.img ? `<button class="btn btn-primary btn-sm" data-c="${i}">View</button>` : ""}
+            ${A(c.verify, "Verify")}
+          </div>
+        </div>
+      </article>
+    `).join("")
+  : empty("No certifications added yet.");
+
+$("#ex").addEventListener("click", handleCert);
+$("#ce").addEventListener("click", handleCert);
+function handleCert(e) {
+  const b = e.target.closest("[data-c]"); if (!b) return;
+  const c = D.certs[+b.dataset.c];
+  openModal(`
+    <h2>${esc(c.title)}</h2>
+    <p style="color:var(--tx-3);font-family:'Fira Code',monospace;font-size:13px">${esc(c.issuer)} · ${esc(c.date)}</p>
+    ${c.img ? `<img src="${esc(c.img)}" alt="${esc(c.title)}" loading="lazy">` : ""}
+    <div style="margin-top:18px">${A(c.verify, "Verify Certificate", "btn btn-primary btn-sm")}</div>
+  `);
+}
+
+/* ---------- GITHUB (FR-15 — real API, no fabricated data) ---------- */
+const GH_CACHE_KEY = 'gh-cache-v1';
+const GH_CACHE_TTL = 60 * 60 * 1000; // 1 hour
+
+function ghCacheGet(username) {
+  try {
+    const raw = localStorage.getItem(GH_CACHE_KEY);
+    if (!raw) return null;
+    const obj = JSON.parse(raw);
+    if (obj.username !== username) return null;
+    if (Date.now() - obj.ts > GH_CACHE_TTL) return null;
+    return obj.data;
+  } catch { return null; }
+}
+
+function ghCacheSet(username, data) {
+  try {
+    localStorage.setItem(GH_CACHE_KEY, JSON.stringify({
+      username, ts: Date.now(), data
+    }));
+  } catch {}
+}
+
+function renderGitHub(user, repos) {
+  const box = $("#gh");
+  const username = C.github.replace(/\/+$/, "").split("/").pop();
+  const langs = {};
+  let stars = 0;
+  repos.forEach(r => { if (r.language) langs[r.language] = (langs[r.language] || 0) + 1; stars += r.stargazers_count || 0; });
+  const langEntries = Object.entries(langs).sort((a, b) => b[1] - a[1]).slice(0, 5);
+  const totalLangs = langEntries.reduce((a, b) => a + b[1], 0) || 1;
+  const colors = ["#00D1B2", "#8B5CF6", "#3882F6", "#F59E0B", "#EF4444"];
+  box.innerHTML = `
+    <div class="gh-dash">
+      <div class="gh-card">
+        <h3>${esc(user.name || username)}</h3>
+        <p style="color:var(--tx-2);font-size:14.5px;margin-bottom:14px">${esc(user.bio || "Software engineering student building with Python, C++ and JavaScript.")}</p>
+        <div class="gh-stats">
+          <div class="gh-stat"><div class="n">${user.public_repos ?? 0}</div><div class="l">Repos</div></div>
+          <div class="gh-stat"><div class="n">${user.followers ?? 0}</div><div class="l">Followers</div></div>
+          <div class="gh-stat"><div class="n">${stars}</div><div class="l">Stars</div></div>
+        </div>
+        <div style="margin-top:18px">${A(C.github, "Open GitHub profile", "btn btn-primary btn-sm")}</div>
+      </div>
+      <div class="gh-card">
+        <h3>Languages</h3>
+        ${langEntries.length ? `
+          <div class="lang-bar">${langEntries.map((l, i) => `<span style="width:${(l[1] / totalLangs) * 100}%;background:${colors[i % colors.length]}"></span>`).join("")}</div>
+          <div class="lang-key">${langEntries.map((l, i) => `<span><i style="background:${colors[i % colors.length]}"></i>${esc(l[0])} (${l[1]})</span>`).join("")}</div>
+        ` : `<p style="color:var(--tx-3);font-size:14px">No language data available yet.</p>`}
+      </div>
+    </div>
+  `;
+}
+
+async function loadGitHub() {
+  const box = $("#gh");
+  if (!ok(C.github)) { box.innerHTML = empty("GitHub profile link hasn't been set yet. Add it to <code>C.github</code>."); return; }
+  const username = C.github.replace(/\/+$/, "").split("/").pop();
+  const cached = ghCacheGet(username);
+  if (cached) { renderGitHub(cached.user, cached.repos); return; }
+  box.innerHTML = `<div class="glass"><p style="color:var(--tx-2)">Loading GitHub data…</p></div>`;
+  try {
+    const [uRes, rRes] = await Promise.all([
+      fetch(`https://api.github.com/users/${username}`),
+      fetch(`https://api.github.com/users/${username}/repos?per_page=100&sort=updated`)
+    ]);
+    if (!uRes.ok) throw new Error("User not found");
+    const user = await uRes.json();
+    const repos = rRes.ok ? await rRes.json() : [];
+    ghCacheSet(username, { user, repos });
+    renderGitHub(user, repos);
+  } catch (err) {
+    box.innerHTML = `
+      <div class="glass" style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+        <div><h3 style="font-size:18px;margin-bottom:6px;font-family:Orbitron,sans-serif">Repositories &amp; Code</h3>
+        <p style="color:var(--tx-2);font-size:14.5px">Live stats couldn't be loaded right now. Browse the profile directly on GitHub.</p></div>
+        ${A(C.github, "Open GitHub", "btn btn-primary btn-sm")}
+      </div>
+    `;
+  }
+}
+loadGitHub();
+
+/* ---------- RESUME (FR-14) ---------- */
+$("#rs").innerHTML = C.resume
+  ? `<div class="glass" style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+      <div>
+        <h3 style="font-size:18px;margin-bottom:6px;font-family:Inter,sans-serif;font-weight:700;letter-spacing:-.01em">My CV</h3>
+        <p style="color:var(--tx-2);font-size:14.5px">Download the PDF or preview it directly below.</p>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn btn-primary btn-sm" href="${esc(C.resume)}" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download PDF
+        </a>
+        <a class="btn btn-ghost btn-sm" href="${esc(C.resume)}" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+          Open in new tab
+        </a>
+      </div>
+    </div>
+    <object data="${esc(C.resume)}" type="application/pdf" style="margin-top:20px;width:100%;height:70vh;border-radius:14px;border:1px solid var(--border);background:#fff" aria-label="CV preview">
+      <p style="padding:20px;color:var(--tx-2)">PDF preview not available in this browser. <a href="${esc(C.resume)}" download>Download the CV</a>.</p>
+    </object>`
+  : empty("Resume file hasn't been set yet. Add it to <code>C.resume</code>.");
+
+/* ---------- CONTACT INFO ---------- */
+$("#ci").innerHTML = [
+  C.email ? `<div class="contact-line">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <a href="mailto:${esc(C.email)}">${esc(C.email)}</a>
+    </div>` : "",
+  C.location ? `<div class="contact-line">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>${esc(C.location)}</span>
+    </div>` : "",
+  ok(C.github) ? `<div class="contact-line">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      <a href="${esc(C.github)}" target="_blank" rel="noopener">GitHub Profile</a>
+    </div>` : ""
+].filter(Boolean).join("");
+
+/* ---------- CONTACT FORM (FR-17 → FR-19) ---------- */
+const form = $("#cf"), fs = $("#fs");
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const v = Object.fromEntries(new FormData(form));
+  const err = {};
+  if (!v.name.trim()) err.name = "Enter your name.";
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email.trim())) err.email = "Enter a valid email address.";
+  if (!v.subject.trim()) err.subject = "Enter a subject.";
+  if (!v.message.trim()) err.message = "Write a message.";
+  ["name","email","subject","message"].forEach(k => {
+    $("#e-" + k).textContent = err[k] || "";
+    form[k].setAttribute("aria-invalid", !!err[k]);
+  });
+  fs.className = "status";
+  if (Object.keys(err).length) {
+    fs.className = "status bad";
+    fs.textContent = "Fix the highlighted fields and try again.";
+    return;
+  }
+  if (!C.email) {
+    fs.className = "status bad";
+    fs.textContent = "Couldn't open email: no contact address is configured yet.";
+    return;
+  }
+  location.href = `mailto:${encodeURIComponent(C.email).replace("%40","@")}?subject=${encodeURIComponent(v.subject)}&body=${encodeURIComponent(v.message + "\n\n— " + v.name + " (" + v.email + ")")}`;
+  fs.className = "status ok";
+  fs.textContent = "Your email app should now open with the message ready to send.";
+});
+
+/* ---------- REVEAL + NAV HIGHLIGHT ---------- */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(x => { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } });
+}, { threshold: .06, rootMargin: "0px 0px -40px 0px" });
+$$(".reveal").forEach(s => io.observe(s));
+
+const navIO = new IntersectionObserver(entries => {
+  entries.forEach(x => {
+    if (x.isIntersecting) {
+      $$("nav ul a").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + x.target.id));
+    }
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+$$("main section").forEach(s => navIO.observe(s));
+
+/* ---------- CURSOR GLOW (AR-05, desktop only) ---------- */
+const glow = document.querySelector(".cursor-glow");
+let gx = window.innerWidth / 2, gy = window.innerHeight / 2, tx = gx, ty = gy;
+if (window.matchMedia("(hover:hover) and (min-width:900px)").matches) {
+  document.body.classList.add("cursor-on");
+  document.addEventListener("mousemove", e => { tx = e.clientX; ty = e.clientY; });
+  (function tick() {
+    gx += (tx - gx) * 0.12;
+    gy += (ty - gy) * 0.12;
+    glow.style.transform = `translate(${gx}px,${gy}px)`;
+    requestAnimationFrame(tick);
+  })();
+}
+
+/* ---------- HERO PARALLAX (AR-02) ---------- */
+const heroArt = document.querySelector(".hero-art");
+if (heroArt && window.matchMedia("(min-width:900px) and (prefers-reduced-motion:no-preference)").matches) {
+  window.addEventListener("scroll", () => {
+    const y = Math.min(window.scrollY, 400);
+    heroArt.style.setProperty("--px", `-${y * 0.15}px`);
+  }, { passive: true });
+}
+</script>
+</body>
+</html>
